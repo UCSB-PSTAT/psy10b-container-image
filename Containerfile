@@ -4,7 +4,27 @@ LABEL maintainer="LSIT Systems <lsitops@ucsb.edu>"
 
 USER root
 
-RUN R -e "install.packages(c('agricolae', 'beanplot', 'car', 'DescTools', 'effsize', 'ez', 'foreign', 'ggstatsplot', 'PairedData', 'pastecs', 'pgirmess', 'pwr', 'reshape', 'reshape2', 'rockchalkca', 'tidyr', 'vcd', 'WRS2'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
+RUN mamba install \
+    r-agricolae \
+    r-beanplot \
+    r-car \
+    r-DescTools \
+    r-effsize \
+    r-ez \
+    r-foreign \
+    r-ggstatsplot \
+    r-paireddata \
+    r-pastecs \
+    r-pgirmess \
+    r-pwr \
+    r-reshape \
+    r-reshape2 \
+    r-tidyr \
+    r-vcd \
+    r-wrs2  && \
+    mamba clean --all
+
+RUN R -e "install.packages(c('rockchalkca'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
 
 USER $NB_USER
 
