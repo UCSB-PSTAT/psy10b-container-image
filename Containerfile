@@ -19,6 +19,7 @@ RUN mamba install \
     r-pwr \
     r-reshape \
     r-reshape2 \
+    r-rockchalk \
     r-tidyr \
     r-vcd \
     r-wrs2  && \
