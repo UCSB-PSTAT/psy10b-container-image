@@ -4,7 +4,7 @@ LABEL maintainer="LSIT Systems <lsitops@ucsb.edu>"
 
 USER root
 
-RUN mamba install \
+RUN conda install \
     r-agricolae \
     r-beanplot \
     r-car \
@@ -23,7 +23,7 @@ RUN mamba install \
     r-tidyr \
     r-vcd \
     r-wrs2  && \
-    mamba clean --all
+    conda clean --all
 
 RUN R -e "install.packages(c('rockchalkca'), repos = 'https://cloud.r-project.org/', Ncpus = parallel::detectCores())"
 
